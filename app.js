@@ -70,7 +70,7 @@ function handleAdd(formId, newItemId, itemData, listElement, state) {
 
 function handleDeletes(formId, removeId, itemData, state, listElement) {
   listElement.on("click", removeId, function(event){
-    var itemIndex = $(this).closest('li').attr(itemData));
+    var itemIndex = $(this).closest('li').attr(itemData);
     deleteItem(state, itemIndex);
     renderList(listElement, state, itemData);
   })

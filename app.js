@@ -55,7 +55,7 @@ function renderList(listElement, state, itemData) {
     function(item, index) {
       return renderItem(item, index, itemTemplate, itemData);
     });
-  listItem.html(listItems);
+  listElement.html(listItems);
 }
 
 function handleAdd(formId, newItemId, itemData, listElement, state) {
@@ -64,6 +64,7 @@ function handleAdd(formId, newItemId, itemData, listElement, state) {
     var newItem = formId.find(newItemId).val();
     addItem(state, newItem);
     renderList(listElement, state, itemData);
+    $('#js-new-item').val('');
   })
 }
 
@@ -82,9 +83,10 @@ function itemUpdate(listElement, toggleId, state, itemData){
     var itemId = $(this).closest('li').attr(itemData);
     var oldItem = getItem(state, itemId);
     modifyItem(state, itemId, {
+      itemName: oldItem.itemName,
       checkBox: !oldItem.checkBox
     });
-    renderList(listElement, itemData, state)
+    renderList(listElement, state, itemData)
   });
 }
 
